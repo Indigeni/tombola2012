@@ -1,0 +1,326 @@
+<!--
+* Tombola js 1.0
+* @copyright 	Copyright (c) 2011, Marco Moser
+* @author       Marco Moser <marco@marcomoser.it>
+* @version      23/12/2004 fix blink node
+* @version      09/08/2004 init
+* @version      13/8/11 new look
+*
+* license GPL 2 (http://www.gnu.org/copyleft/gpl.html)
+-->
+<html>
+<head>
+<script language="javascript">
+var smorfia = [
+        {"Numero":1,"Valore":"Fabio Lalli","Significato":"Il primo Indigeno Digitale ( in assoluto )","Autore":"koalalorenzo"},
+        {"Numero":2,"Valore":"Number two","Significato":"antagonista di 6 ne 'il prigioniero', e uno dei cylon di BSG.","Autore":"Elisa Danese"},
+        {"Numero":3,"Valore":"CSS responsive","Significato":"","Autore":"Sara T."},
+        {"Numero":4,"Valore":"L'ID di Zuckerberg nel database di Facebook","Significato":"","Autore":"Carlo Mallone"},
+        {"Numero":5,"Valore":"Le versioni dell'iPhone","Significato":"","Autore":"Giuseppe Gigante"},
+        {"Numero":6,"Valore":"La morte per Internet","Significato":"( Riferita a Internet Explorer )","Autore":"koalalorenzo"},
+        {"Numero":7,"Valore":"i bit del codice ASCII","Significato":"","Autore":"Elisa Danese"},
+        {"Numero":8,"Valore":"Il nuovo Windows","Significato":"","Autore":"Gabriele Pannacci"},
+        {"Numero":9,"Valore":"Deep Space Nine","Significato":"Stazione Spaziale dell'omonima serie di Star Trek.","Autore":"Giuseppe Gigante"},
+        {"Numero":10,"Valore":"L'ultimo Nexus Tablet","Significato":"","Autore":"Sara T."},
+        {"Numero":11,"Valore":"Le incarnazioni del Doctor Who.","Significato":"Il Doctor Who è un Timelord, abitante ed unico superstite del pianeta Gallifrey. Se ferito o in punto di morte, può rigenerarsi, conservando i suoi ricordi, ma cambiando aspetto e personalità. Il Doctor Who è la serie di fantascienza più longeva del mondo.","Autore":"Giuseppe Gigante"},
+        {"Numero":12,"Valore":"Il numero esadecimale C","Significato":"","Autore":"Elisa Danese"},
+        {"Numero":13,"Valore":"Il numero binario 1101","Significato":"","Autore":"Elisa Danese"},
+        {"Numero":14,"Valore":"Grand Marshall/High Warlord","Significato":"Massimo Grado PVP in World of Warcraft 'vanilla'","Autore":"Pepe"},
+        {"Numero":15,"Valore":"15 settembre 1997 viene lanciato Google","Significato":"","Autore":"Fabio"},
+        {"Numero":16,"Valore":"16 Kb la RAM del Commodore 16","Significato":"Il Commodore 16 è un modello di home computer presentato da Commodore nel 1984 come erede del VIC-20. Faceva parte della serie 264, che comprendeva anche il Commodore Plus/4 ed il raro Commodore 116.","Autore":"Fabio"},
+        {"Numero":17,"Valore":"Le prime due cifre del numero di registro dell'Enterprise","Significato":"USS Enterprise NCC1701, comandata da James Tiberus Kirk, e successivamente, in modelli eredi, da Jean Luc Picard.","Autore":"Giuseppe Gigante"},
+        {"Numero":18,"Valore":"Enigma","Significato":"La macchina Enigma fu sviluppata da Arthur Scherbius in varie versioni a partire dal 1918 quando ottenne il brevetto, ispirandosi al disco cifrante di Leon Battista Alberti","Autore":"Dev FILLIB Edoardo Giancarlini"},
+        {"Numero":19,"Valore":"Ernest Rutherford","Significato":"Il fisico Ernest Rutherford avvia la prima reazione nucleare della storia.","Autore":"Giuseppe Gigante"},
+        {"Numero":20,"Valore":"20 Kb del Vic 20","Significato":"Il Commodore VIC-20[1] o Commodore VIC 20[2] (in Giappone: Commodore VIC-1001  in Germania: Commodore VC 20)[3] è un home computer della Commodore Business Machines Inc. commercializzato dall'ottobre 1980 al gennaio 1985. Fu proposto come computer per la famiglia e per il gioco ed ebbe un grande successo di vendite, subissato solo dal successivo Commodore 64. L'hardware è basato sul processore MOS 6502, con una memoria ROM di circa 20 kB contenente sistema operativo e interprete BASIC, memoria RAM di 5 kB, di cui 3,5 kB disponibili per la programmazione in BASIC.","Autore":"Fabio"},
+        {"Numero":21,"Valore":"Olivetti M21","Significato":"L'Olivetti M21 è la versione trasportabile dell'Olivetti M24, ed ha sostituito l'M10, il primo, sfortunato, portatile della casa di Ivrea.","Autore":"Giuseppe Gigante"},
+        {"Numero":22,"Valore":"Pac-Man (22-05-1980)","Significato":"Pac-Man (conosciuto in Giappone con il nome di Pakkuman (_____?)) è un videogioco ideato da Tohru Iwatani programmatore della Namco e pubblicato per la prima volta dalla Midway Games il 22 maggio 1980 nel formato arcade da sala","Autore":"Dev FILLIB Edoardo Giancarlini"},
+        {"Numero":23,"Valore":"23 febbraio 1998 inizia il progetto Mozilla creato da Netscape Communications","Significato":"On February 23, 1998, Netscape Communications Corporation created a project called Mozilla (after the original code name of the Netscape Navigator browser which — according to Pascal Finette — is a mashup of 'Mosaic Killer') to co-ordinate the development of the Mozilla Application Suite, the open source version of Netscape's internet software, Netscape Communicator.[3][4] Jamie Zawinski says he came up with the name 'Mozilla' at a Netscape staff meeting.[5][6] A small group of Netscape employees were tasked with coordination of the new community.","Autore":"Fabio"},
+        {"Numero":24,"Valore":"Il 24 febbraio è giorno di nascita di Steve Jobs","Significato":"Steven Paul 'Steve' Jobs (/_d__bz/  February 24, 1955 – October 5, 2011)","Autore":"Fabio"},
+        {"Numero":25,"Valore":"25 Agosto 1991 nasce Linux","Significato":"Linux nasce ufficialmente il 25 agosto del 1991 quando Linus Torvalds, allora studente dell'Università di Helsinki, invia un messaggio al gruppo di discussione in USENET comp.os.minix nel quale afferma di lavorare ad un sistema operativo per puro hobby. Il titolo del gruppo è 'What would you like to see most in minix'.","Autore":"Fabio"},
+        {"Numero":26,"Valore":"Topolino","Significato":"Walt Disney fa debuttare Mickey Mouse in Steamboat Willie","Autore":"Giuseppe Gigante"},
+        {"Numero":27,"Valore":"Il Principio D'Inteterminazione di Heisenberg","Significato":"Werner Karl Heisenberg formula il famoso Principio D'Indeterminazione, secondo il quale, -l’ambito della realtà le cui connessioni sono formulate dalla teoria quantistica, le leggi naturali non conducono quindi ad una completa determinazione di ciò che accade nello spazio e nel tempo  l’accadere (all’interno delle frequenze determinate per mezzo delle connessioni) è piuttosto rimesso al gioco del caso-","Autore":"Giuseppe Gigante"},
+        {"Numero":28,"Valore":"HP 28","Significato":"L'HP 28 è la calcolatrice programmabile per antonomasia, la prima in assoluto ad adottare il sistema CAS (Computer Algebra System) per la risoluzione di calcoli complessi","Autore":"Giuseppe Gigante"},
+        {"Numero":29,"Valore":"youporn","Significato":"il 29 nella smorfia napoletana è 'O'Padr re criatur' (il pene) il numero potrebbe risultare calzante per un sito porno qualsiasi. E poi come da ultime slide di Fabio è giusto mettere un po di porn anche qui  )","Autore":"Vincenzo"},
+        {"Numero":30,"Valore":"John Maynard Keynes","Significato":"L'economista britannico Keynes col suo Trattato della Moneta getta le basi per un'economia dal volto più umano. E teorizza per la prima volta il concetto di Start Up (impresa precursore) e Fundraising (finanziamento collaborativo).","Autore":"Giuseppe Gigante"},
+        {"Numero":31,"Valore":"RGB","Significato":"RGB è il nome di un modello di colori le cui specifiche sono state descritte nel 1931 dalla CIE (Commission internationale de l'éclairage). Diversamente dalle immagini a livelli di grigio, tale modello di colori è di tipo additivo e si basa sui tre colori rosso (Red), verde (Green) e blu (Blue), da cui appunto il nome RGB, da non confondere con i colori primari sottrattivi giallo, ciano e magenta.","Autore":"Dev FILLIB Edoardo Giancarlini"},
+        {"Numero":32,"Valore":"Sony Playstation","Significato":"I bit della prima Sony Playstation","Autore":"Pepe"},
+        {"Numero":33,"Valore":"Lo Zebra","Significato":"Lo ZEBRA (Zeer Eenvoudige Binaire Reken Automaat - Calcolatore Binario Molto Semplice) era un bizzarro computer elettromeccanico Olandese che sfoggiava un'inusuale architettura a...33 Bit :D","Autore":"Giuseppe Gigante"},
+        {"Numero":34,"Valore":"IBM 405","Significato":"Nel 1934 fu introdotta la tabulatrice IBM 405, in grado di stampare anche caratteri alfabetici e non solo numeri:","Autore":"Dev FILLIB Edoardo Giancarlini"},
+        {"Numero":35,"Valore":"Gilda","Significato":"il numero di Gilda 35","Autore":"Domenico Polimeno"},
+        {"Numero":36,"Valore":"Turing Machine","Significato":"Descritta da Turing nel 1936","Autore":"Andrea N."},
+        {"Numero":37,"Valore":"Il Cannone di Tesla","Significato":"Il geniale scienziato Nicola Tesla teorizza nel suo 'The Art of Projecting Concentrated Non-dispersive Energy through the Natural Media' un cannone formato da un tubo sottovuoto da caricarsi con gas ionizzato in grado di emettere un violento getto di particelle. Nelle sue intenzioni, avrebbe dovuto rendere inoffensive le armi e comunicazioni, ponendo fine immediatamente a tutte le guerre.","Autore":"Giuseppe Gigante"},
+        {"Numero":38,"Valore":"Radio Londra","Significato":"Radio Londra, da un progetto BBC per contrastare la propaganda nazifascista, è il primo esempio storico di trasmissione pirata, ossia non autorizzata :)","Autore":"Giuseppe Gigante"},
+        {"Numero":39,"Valore":"HP","Significato":"La società, nata come produttrice di componenti elettroniche, fu fondata da Bill Hewlett e David Packard, due ingegneri elettronici laureatisi a Stanford, nel 1939  la prima sede fu un piccolo garage in legno sul retro della casa dove abitava David Packard con la moglie, al numero 367 della Addison Avenue, a Palo Alto vicino Santa Clara (California).","Autore":"Dev FILLIB Edoardo Giancarlini"},
+        {"Numero":40,"Valore":"Il Grande Dittatore","Significato":"Il Grande Dittatore di Charlie Chaplin è il primo film parlante del famoso 'Charlot', ma segna anche il tramonto del vecchio film muto, oltre ad esser stato registrato in presa diretta.","Autore":"Giuseppe Gigante"},
+        {"Numero":41,"Valore":"Dennis M. Ritchie","Significato":"Dennis M. Ritchie nato nel 1941, morto nel 2011, considerato l'inventore del linguaggio C e uno dei più attivi sviluppatori del sistema operativo Unix","Autore":"Dev FILLIB Edoardo Giancarlini"},
+        {"Numero":42,"Valore":"Risposta alla domanda sulla vita l'universo e tutto quanto","Significato":"Tratto da 'Guida galattica per autostoppisti'","Autore":"koalalorenzo"},
+        {"Numero":43,"Valore":"Captain Crunch","Significato":"Nasce John Draper per tutti 'Captain Crunch' probabilmente il phreaker più famoso della storia, nonché un programmatore e hacker statunitense","Autore":"Giampiero Cavaliere"},
+        {"Numero":44,"Valore":"Il Ponte Radio","Significato":"Durante gli orrori della seconda guerra mondiale, il governo degli Stati Uniti implementa i primi ponti radio usando tecnologia sviluppata da Nicola Tesla, deceduto un anno prima.","Autore":"Giuseppe Gigante"},
+        {"Numero":45,"Valore":"La Bomba Atomica","Significato":"Little Boy, la prima bomba atomica, viene sganciata il 6 agosto 1945 sulla città di Hiroshima.","Autore":"Giuseppe Gigante"},
+        {"Numero":46,"Valore":"La Lettera 46","Significato":"La Lettera 46 Olivetti è stata la macchina da scrivere più versatile della storia, e la più venduta, nell'epoca in cui il computer non era per tutti.","Autore":"Giuseppe Gigante"},
+        {"Numero":47,"Valore":"System 47","Significato":"L'interfaccia LCARS utilizzata nei computer di bordo delle astronavi della Flotta Stellare di Star Trek","Autore":"Alessandro Prunesti"},
+        {"Numero":48,"Valore":"48k Sinclair ZX Spectrum","Significato":"Il Sinclair ZX Spectrum, prodotto a partire dal 1982 dall'azienda inglese Sinclair Research Ltd di Clive Sinclair, è un microcomputer a 8 bit basato sul microprocessore Z80A, originariamente dotato di 16 kB di ROM contenenti il linguaggio BASIC, di 16 kB di RAM espandibili a 48 kB e di una caratteristica tastiera in lattice con 40 tasti multifunzione","Autore":"marux"},
+        {"Numero":49,"Valore":"il plutonio","Significato":"Durante il  Manhattan Project spesso il plutonio veniva chiamato semplicemente 49","Autore":"Domenico Polimeno"},
+        {"Numero":50,"Valore":"The Wizard of Woz","Significato":"Nasce il grassottello e simpatico Steve Wozniak, socio di Steve Jobs nella nascita di Apple, papà dell'Apple I e prolifico inventore ancora ai nostri giorni","Autore":"Giuseppe Gigante"},
+        {"Numero":51,"Valore":"La Ferrari","Significato":"Nel 1951, a Silverstone, la Ferrari di Gonzalez taglia vittoriosa il traguardo. E' la prima vittoria in assoluto delle 'Rosse' nate dal Drake Enzo Ferrari.","Autore":"Giuseppe Gigante"},
+        {"Numero":52,"Valore":"Nasce la Commodore","Significato":"Tramiel, sopravvissuto agli orrori del Nazismo, fonderà  la Commodore Portable Typewriter Company, che successivamente, nel 1955 diventerà la Commodore Business Machine LTD.","Autore":"Giuseppe Gigante"},
+        {"Numero":53,"Valore":"Andrew Wiles","Significato":"Andrew Wiles, matematico inglese, nasce l'11 Aprile 1953. Dimostrerà nel 1986 l'ultimo teorema di Fermat e contribuirà pesantemente nel mondo dell'informatica per i suoi studi su Turing.","Autore":"Giuseppe Gigante"},
+        {"Numero":54,"Valore":"Nasce la TV Italiana","Significato":"Il 3 gennaio 1954 nasce ufficialmente la televisione italiana con la trasmissione Arrivi e Partenze","Autore":"Giuseppe Gigante"},
+        {"Numero":55,"Valore":"Il flusso canalizzatore","Significato":"Emmet 'Doc' Brown scopre nel 1955 il flusso canalizzatore mentre era intento a collegare un orologio sulla catenella dello sciacquone","Autore":"Giuseppe Gigante"},
+        {"Numero":56,"Valore":"1956 invenzione della fibra ottica","Significato":"Optical fiber invented by  Basil Hirschowitz, C. Wilbur Peters, and Lawrence E. Curtiss","Autore":"Fabio"},
+        {"Numero":57,"Valore":"Carosello","Significato":"Il 3 Febbraio va in onda per la prima volta Carosello, trasmissione che chiunque s'occupa di comunicazione dovrebbe studiare","Autore":"Giuseppe Gigante"},
+        {"Numero":58,"Valore":"ARPA","Significato":"Creazione dell'istituto di ricerca ARPA da parte del governo degli USA","Autore":"Damiano"},
+        {"Numero":59,"Valore":"I venture capital iniziano a sborsare","Significato":"Fairchild Semiconductor è la prima startup a essere finanziata da un fondo di venture capital (Venrock)","Autore":"Andrea N."},
+        {"Numero":60,"Valore":"World of Warcraft","Significato":"I livelli del gioco in 'vanilla'","Autore":"Pepe"},
+        {"Numero":61,"Valore":"Yuri Gagarin","Significato":"La Terra è Blu: Yuri Gagarin diventa il primo uomo nello spazio.","Autore":"Giuseppe Gigante"},
+        {"Numero":62,"Valore":"James Bond e Q","Significato":"L'agente segreto più famoso del mondo e lo scienziato più geniale con i suoi straordinari tecnogadget fanno per la prima volta la loro comparsa al cinema.","Autore":"Giuseppe Gigante"},
+        {"Numero":63,"Valore":"63 millioni di dollari è il budget per la creazione di Matrix","Significato":"","Autore":"Fabio"},
+        {"Numero":64,"Valore":"Commodore 64","Significato":"In informatica il BASIC (acronimo dell'inglese 'Beginner's All purpose Symbolic Instruction Code',[1] in italiano 'codice di istruzioni simboliche di uso generale per principianti') è un linguaggio di programmazione ad alto livello sviluppato nel 1964 presso l'Università di Dartmouth sul calcolatore GE-225. Ne furono coinventori i professori John George Kemeny e Thomas Eugene Kurtz. Il primo programma in BASIC 'girò' il 1º maggio 1964 alle ore 4:00.[2]","Autore":"Fabio"},
+        {"Numero":65,"Valore":"Olivetti Programma 101","Significato":"Nell'ottobre del 1965 venne presentato all'esposizione Bema Show di New York l'Olivetti Programma 101, antesignana del moderno computer. La P101, ideata dall'ingegnere italiano Pier Giorgio Perotto, era una macchina da calcolo per uso personale, che possedeva un set di istruzioni interne ben definito. Era ealizzata con componenti discreti e output su nastro di carta.","Autore":"Dev FILLIB Edoardo Giancarlini"},
+        {"Numero":66,"Valore":"Star Trek","Significato":"L'8 Settembre 1966 va in onda la prima puntata di Star Trek, il fortunato serial di fantascienza di Gene Roddenberry, che ha anticipato prodotti come cellulari, tablet, computer con interfaccia touch e vocale.","Autore":"Giuseppe Gigante"},
+        {"Numero":67,"Valore":"Ozzy Osbourne","Significato":"Il giovane Bill Ward, insieme all'amico Tony Iommi fondano a Birmingham i Polka Tulk. A loro si unirà il giovane Ozzy Osbourne. Il gruppo, da blues, diventerà la prima band Heavy Metal e prenderà il nome di Black Sabbath","Autore":"Giuseppe Gigante"},
+        {"Numero":68,"Valore":"Motorola M68xxx","Significato":"Il microprocessore M68000 e successivi sono stati il potente motore dell'informatizzazione degli anni 80' e metà anni 90'. Equipaggiavano i computer Apple Macintosh, i Commodore Amiga, gli Atari ST e molti microcomputer/workstation, disputandosi il mercato con la serie i80x86","Autore":"Giuseppe Gigante"},
+        {"Numero":69,"Valore":"Lo sbarco sulla Luna","Significato":"Neil Armstrong e Buzz Aldrin, il 20 Luglio 1969 sbarcano sulla Luna al culmine della missione spaziale Apollo 11. E' un momento storico per l'umanità","Autore":"Giuseppe Gigante"},
+        {"Numero":70,"Valore":"The Burning Crusade","Significato":"Massimo livello dell'espansione World of Wacraft 'The Burning Crusade'","Autore":"Pepe"},
+        {"Numero":71,"Valore":"L'Email","Significato":"Ray Tomlinson inventa l'Email.","Autore":"Giuseppe Gigante"},
+        {"Numero":72,"Valore":"Pong","Significato":"Il primo gioco commercializzato (o comunque quello più famoso) nasceva nel 1972","Autore":"Andrea N."},
+        {"Numero":73,"Valore":"1973 invenzione dell'ethernet","Significato":"Ethernet invented by  Bob Metcalfe and David Boggs","Autore":"Fabio"},
+        {"Numero":74,"Valore":"Saljut 4","Significato":"La stazione spaziale Saljut 4 (DOS4), Saluto in russo, fu la prima stazione realmente abitabile ed utilizzabile da cosmonauti, successivamente ai fallimenti delle prime tre missioni.","Autore":"Giuseppe Gigante"},
+        {"Numero":75,"Valore":"Microsoft","Significato":"Fondazione di Microsoft","Autore":"Damiano"},
+        {"Numero":76,"Valore":"Nasce il Commodore PET","Significato":"Il Commodore PET è il primo microcomputer davvero popolare.","Autore":"Giuseppe Gigante"},
+        {"Numero":77,"Valore":"Le gambe delle geek","Significato":"","Autore":"Nicola"},
+        {"Numero":78,"Valore":"Space Invaders","Significato":"Space Invaders (__________ Sup_su Inb_d_?) è un videogioco arcade del 1978 sviluppato da Toshihiro Nishikado.[1] È stato prodotto in origine dalla Taito, e dato in licenza per la produzione in USA alla divisione Midway Games della Bally Technologies. Sebbene sia molto semplice per gli standard odierni,[2] è stato uno dei videogiochi più influenti della sua generazione: il gioco generò in pochi anni un fatturato di 500 milioni di dollari","Autore":"Dev FILLIB Edoardo Giancarlini"},
+        {"Numero":79,"Valore":"L'Olivetti sbarca in America","Significato":"Nel1979 viene fondato a Cupertino negli Stati Uniti l'Olivetti Advanced Technology Center (ATC)","Autore":"Giuseppe Gigante"},
+        {"Numero":80,"Valore":"Wrath of the Lich King","Significato":"Massimo livello dell'espansione World of Wacraft 'Wrath of the Lich King'","Autore":"Pepe"},
+        {"Numero":81,"Valore":"IBM 5150","Significato":"Nel 1981 fece la sua comparsa nel mercato il primo di una serie di personal computer che divenne molto popolare: l'IBM 5150, meglio conosciuto come PC IBM","Autore":"Dev FILLIB Edoardo Giancarlini"},
+        {"Numero":82,"Valore":"Olivetti M20","Significato":"Basato sul potente Zilog Z8001, la macchina nasceva per battagliare contro i PC IBM: doppia interfaccia seriale e la possibilità d'affiancare al PCOS il più classico MS-DOS/IBM-DOS con una scheda daughter fecero dell'M20 una delle macchine più usate nell'industria.","Autore":"Giuseppe Gigante"},
+        {"Numero":83,"Valore":"Apple Lisa","Significato":"Dopo una lunga gestazione, nasce l'Apple Lisa, il primo computer 'popolare' con interfaccia Grafica, figlia di un progetto Xerox","Autore":"Giuseppe Gigante"},
+        {"Numero":84,"Valore":"Nasce il Sinclair QL","Significato":"Il nome QL significa sia Quantum Leap, e nacque nel 1984 dalla profilica mente di Sir Clive Sinclair. Fu uno dei primi computer con interfaccia grafica, insieme all'Amiga 1000 ed Apple Lisa.","Autore":"Giuseppe Gigante"},
+        {"Numero":85,"Valore":"Cataclysm","Significato":"Massimo livello dell'espansione World of Wacraft 'Cataclysm'","Autore":"Pepe"},
+        {"Numero":86,"Valore":"The Legend of Zelda","Significato":"Frutto della prolifica fantasia di Shigeru Miyamoto, The Legend of Zelda è stato il capostipite di una serie di giochi fantasy ispiratissimi","Autore":"Giuseppe Gigante"},
+        {"Numero":87,"Valore":"Final Fantasy","Significato":"Il primo Final Fantasy","Autore":"Damiano"},
+        {"Numero":88,"Valore":"Le miglia orarie necessarie al viaggio nel tempo con la DeLorean di Ritorno al Futuro","Significato":"","Autore":"Gabriele Salvini"},
+        {"Numero":89,"Valore":"1889 >> Anno fondazione Nintendo Ltd","Significato":"La Nintendo Company Ltd. (_______ Nintend_ Kabushiki gaisha?, Nintend_ società per azioni) è un'azienda giapponese specializzata nella produzione videogiochi e console. Nintendo è una delle più grandi compagnie del Giappone.[2] Fondata il 23 settembre 1889 da Fusajiro Yamauchi, all'inizio degli anni Ottanta la Nintendo è passata dai giochi di carte e meccanici ai giochi elettronici. Sebbene sia entrata nel mondo dei videogiochi nel 1975 come distributore della console Magnavox Odyssey, nel 1977 ha cominciato a costruire console proprie. Grazie all'enorme successo riscosso in Giappone, nel 1985 Nintendo arrivò nel mercato dell'America settentrionale e l'anno successivo approdò in Europa.","Autore":"Fabio"},
+        {"Numero":90,"Valore":"World Wide Web","Significato":"Inizia la progettazione del World Wide Web. Nascerà un anno dopo http://it.wikipedia.org/wiki/Storia_di_Internet#Nascita_del_World_Wide_Web","Autore":"koalalorenzo"}
+    ];
+</script>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<style type="text/css">
+    h1 { font-size: 170%; text-shadow: 0 2px 5px #999; letter-spacing: 7px; }
+    table { width: 90%; height: 500px; margin: 0 auto; }
+    td { text-align: center; font-size: 250%; cursor: pointer; background-color: #eee; color: #333; border-radius: 9px; }
+    textarea { color: white; background-color: #000; overflow: visible; font-weight: bold; width: 90%; }
+
+</style>
+<title>Tombola js</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+var orig;        // origin: '1','2',...'90'
+var hist;        // history: extracted
+function init()
+{
+    hist=new Array();
+    orig=new Array();
+    for(var ii=1;ii<=90;ii++)
+    {
+	orig.push(ii);
+    }
+}
+
+
+function BlinkNode(celnode,times,millis)
+{
+    this.celnode=celnode;
+    this.times=times;
+    this.millis=millis;
+    var self = this;
+    // blink the node
+    this.blink = function()
+    {
+	if (self.times % 2 == 0) self.celnode.className='btn btn-danger';
+	else self.celnode.className='btn btn-danger';
+	if (self.times > 0)
+	{
+	    self.times--;
+	    setTimeout(self.blink,self.millis);
+	}
+	else self=null;
+    }
+}
+
+// select a nr [1 - 90]
+function selectNr(nn)
+{
+    // seleziona
+    var celnode= $('#nr'+nn)//document.getElementById("nr"+nn);
+    celnode.addClass('btn-primary')
+
+    // toglie da orig
+    var idx=searchNr(orig,nn);
+    if (idx >= 0) orig.splice(idx,1);
+
+    // appende in hist
+    idx=searchNr(hist,nn);
+    if (idx == -1) hist.push(nn);
+
+    var cc=new BlinkNode(celnode,9,3000);
+    cc.blink();
+
+    dumpHist();
+    var number = smorfia[nn-1].Numero;
+    var author = smorfia[nn-1].Autore;
+    var value = smorfia[nn-1].Valore;
+    var expected = smorfia[nn-1].Significato;
+
+    $('#myModal .modal-body h1').text(number);
+    $('#myModal .modal-body h2').text(value);
+    $('#myModal .modal-body span').text(expected);
+    $('#myModal .modal-footer small').text(author);
+    $('#myModal').modal();
+
+}
+// deselect a nr [1 - 90]
+function resetNr(nn)
+{
+    // deseleziona
+    var celnode=document.getElementById("nr"+nn);
+    celnode.className='';
+
+    // toglie da hist
+    var idx=searchNr(hist,nn);
+    if (idx>=0) hist.splice(idx,1);
+
+    // appende a orig
+    idx=searchNr(orig,nn);
+    if (idx==-1) orig.push(nn);
+
+    dumpHist();
+}
+// search in array
+// return position or -1 if not found
+function searchNr(aa,nn)
+{
+    for(var ii=0;ii<aa.length;ii++)
+    {
+	if (aa[ii]==nn) return ii;
+    }
+    return -1;
+}
+
+function dumpHist()
+{
+    var ii,ss='';
+    for(ii=0;ii<hist.length;ii++)
+    {
+	ss+='<span class="label label-success">' + hist[ii]+'</span>';
+    }
+    document.getElementById('dumplist').innerHTML=ss;
+}
+
+// metodi esterni
+
+function choseMe(anode)
+{
+    var id=anode.id;
+    var nn=id.match(/\d+/)[0];
+
+    // e' meno probabile trovare un estratto
+    if (searchNr(hist,nn) == -1)
+    {
+	selectNr(nn);
+    }
+    else
+    {
+	resetNr(nn);
+    }
+
+}
+
+function extractRandom()
+{
+    var dbg;
+    var rr=1;
+    if (orig.length<=0) return; // e' tutto on
+
+    while(rr>=1) rr=Math.random();      // [0-1], toglie 1 x probabilita'
+    var idx=Math.floor(rr * orig.length);
+    var nn=orig[idx];
+
+    //document.forms["f1"].debug.value="rr="+rr+" idx="+idx+"/"+orig.length+" nn="+nn+" orig="+orig;
+
+    if (searchNr(hist,nn) == -1)
+    {
+	selectNr(nn);
+    }
+}
+// sullo spazio estrai a caso
+function manageKeyb()
+{
+    //var cc = String.fromCharCode(event.keyCode).toUpperCase();
+    //if (cc == ' ')
+    extractRandom();
+}
+function chgname()
+{
+    var name=prompt("Nome tombola","Tombola nr. ");
+    if (name) document.getElementById("tombtit").innerHTML=name;
+}
+init();
+document.onkeypress = manageKeyb;
+
+function tombola_writeln()
+{
+    var xx,yy,nr;
+    for(yy=0;yy<9;yy++)
+    {
+        document.writeln('<tr>');
+        for(xx=0;xx<10;xx++)
+        {
+            nr=yy*10+xx+1;
+            document.writeln('<td class="btn" id="nr'+nr+'" onclick="choseMe(this)">'+nr+'</td>');
+        }
+        document.writeln('</tr>');
+    }
+}
+
+</script>
+<body>
+<div class="page-header">
+    <h1 id="tombtit">TOMBOLA</h1>
+</div>
+
+<table>
+<script type="text/javascript">tombola_writeln();</script>
+</table>
+<form name="f1">
+
+<div style="margin: 3px 0px;">
+<!-- <input type="button" value="Numero" onclick="extractRandom()"/> -->
+<!-- <input type="button" value="Reset [F5]" onclick="if (confirm('Sicuro?')) window.location.reload()"/> -->
+<!-- <input type="button" value="Stampa" onclick="window.print()"/> -->
+<!-- <input type="button" value="Titolo" onclick="chgname()"/> -->
+<!-- <input type="button" value="Schermo intero [F11]" onclick="alert('premi F11')"/> -->
+<div id="dumplist"></div>
+</div>
+
+</form>
+<!-- Button to trigger modal -->
+    <!-- Modal -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 id="myModalLabel">Smorfia Indigena</h3>
+      </div>
+      <div class="modal-body">
+        <h1></h1>
+        <h2></h2>
+        <span></span>
+      </div>
+      <div class="modal-footer">
+        <small></small>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+</body>
+</html>
