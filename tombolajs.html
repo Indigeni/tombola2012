@@ -118,6 +118,7 @@ var smorfia = [
 <script type="text/javascript">
 var orig;        // origin: '1','2',...'90'
 var hist;        // history: extracted
+var show = true;
 function init()
 {
     hist=new Array();
@@ -173,11 +174,14 @@ function selectNr(nn)
     var value = smorfia[nn-1].Valore;
     var expected = smorfia[nn-1].Significato;
 
-    $('#myModal .modal-body h1').text(number);
-    $('#myModal .modal-header h3').text(value);
-    $('#myModal .modal-body div').text(expected);
-    $('#myModal .modal-footer small').text(author);
-    $('#myModal').modal();
+    if(show)
+    {
+            $('#myModal .modal-body h1').text(number);
+            $('#myModal .modal-header h3').text(value);
+            $('#myModal .modal-body div').text(expected);
+            $('#myModal .modal-footer small').text(author);
+            $('#myModal').modal();
+    }
 
 }
 // deselect a nr [1 - 90]
@@ -283,8 +287,10 @@ function tombola_writeln()
 </script>
 <body>
 <div class="page-header">
-    <h1 id="tombtit">TOMBOLA</h1>
+    <h1 id="tombtit">TOMBOLA - Indigeni Digitali - Smorfia Nerd</h1>
 </div>
+
+<button id="switcher" type="button" class="btn">Modal</button>
 
 <table class="table">
 <script type="text/javascript">tombola_writeln();</script>
@@ -317,5 +323,15 @@ function tombola_writeln()
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
       </div>
     </div>
+<script>
+$(document).ready(function() {
+  $('#switcher').click(
+        function(){
+         show = !show;
+         $('#switcher').toggleClass("btn-danger");
+        }
+  );
+});
+</script>
 </body>
 </html>
